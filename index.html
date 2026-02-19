@@ -1,194 +1,149 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GreenHarvest SaaS Platform</title>
+<title>GreenHarvest Organics</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#0b1410,#111827);
-  color:#fff;
-}
+body{font-family:Poppins,sans-serif;background:#0f1f17;color:#fff;overflow-x:hidden}
+section{padding:80px 20px}
 h1,h2,h3{font-weight:600}
-.container{padding:30px}
-.btn{
-  padding:12px 25px;
-  border-radius:30px;
-  background:linear-gradient(45deg,#22c55e,#16a34a);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  transition:.3s;
-}
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(34,197,94,.3)}
-.sidebar{
-  position:fixed;
-  left:0;top:0;
-  width:240px;
-  height:100vh;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  padding:30px 20px;
-}
-.sidebar h2{margin-bottom:40px}
-.sidebar a{
-  display:block;
-  margin:15px 0;
-  color:#ccc;
-  text-decoration:none;
-  font-size:15px;
-}
-.sidebar a:hover{color:#22c55e}
-.main{
-  margin-left:260px;
-  padding:40px;
-}
-.card{
-  background:rgba(255,255,255,0.05);
-  padding:25px;
-  border-radius:20px;
-  margin-bottom:25px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
-}
-.stat{
-  text-align:center;
-}
-.stat h3{font-size:28px;color:#22c55e}
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:30px;
-}
-input{
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:#1f2937;
-  color:#fff;
-  margin-bottom:10px;
-  width:100%;
-}
-@media(max-width:900px){
-.sidebar{width:200px}
-.main{margin-left:210px}
-}
-@media(max-width:768px){
-.sidebar{display:none}
-.main{margin-left:0}
-}
+.container{max-width:1100px;margin:auto}
+.btn{padding:12px 25px;border-radius:30px;background:linear-gradient(45deg,#22c55e,#16a34a);border:none;color:#fff;cursor:pointer;transition:.3s}
+.btn:hover{transform:translateY(-3px)}
+header{position:fixed;width:100%;top:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);z-index:10}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
+nav a{margin-left:20px;cursor:pointer}
+.hero{min-height:100vh;display:flex;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=80') center/cover}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#13291d;padding:20px;border-radius:15px}
+.card:hover{transform:translateY(-5px);transition:.3s}
+.hidden{display:none}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center}
+.modal-content{background:#13291d;padding:30px;border-radius:20px;width:90%;max-width:500px}
+.dashboard{background:#09160f;padding:20px;border-radius:20px}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:15px;border-radius:50%;font-size:20px}
 </style>
 </head>
+
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-<h2>GreenHarvest</h2>
-<a href="#">Dashboard</a>
-<a href="#">Dealers</a>
-<a href="#">Orders</a>
-<a href="#">Products</a>
-<a href="#">Payments</a>
-<a href="#">Analytics</a>
+<header>
+<nav>
+<h3>GreenHarvest</h3>
+<div>
+<a onclick="showSection('home')">Home</a>
+<a onclick="showSection('products')">Products</a>
+<a onclick="showSection('dealer')">Dealer</a>
+<a onclick="showSection('admin')">Admin</a>
 </div>
+</nav>
+</header>
 
-<!-- MAIN -->
-<div class="main">
-
-<div class="topbar">
-<h1>Admin Dashboard</h1>
-<button class="btn">Logout</button>
+<!-- HOME -->
+<section id="home" class="hero">
+<div class="container">
+<h1>Premium Organic Fertilizer Platform</h1>
+<p>Manufacturer → Dealers → Distributors</p><br>
+<button class="btn" onclick="showSection('products')">Explore Products</button>
 </div>
+</section>
 
+<!-- PRODUCTS -->
+<section id="products" class="hidden">
+<div class="container">
+<h2>Our Products</h2><br>
 <div class="grid">
-<div class="card stat">
-<h3>182</h3>
-<p>Total Dealers</p>
-</div>
-<div class="card stat">
-<h3>₹18.4L</h3>
-<p>Monthly Revenue</p>
-</div>
-<div class="card stat">
-<h3>64</h3>
-<p>Pending Orders</p>
-</div>
-<div class="card stat">
-<h3>23</h3>
-<p>New Leads</p>
-</div>
-</div>
-
 <div class="card">
-<h2>Revenue Analytics</h2>
-<canvas id="myChart"></canvas>
+<h3>Bio Growth Booster</h3>
+<p>Improves crop yield by 18%</p>
+<br>
+<button class="btn" onclick="openModal('Bio Growth Booster improves soil health and root strength. Suitable for all crops.')">View Details</button>
 </div>
-
 <div class="card">
-<h2>Recent Dealer Leads</h2>
-<p>Ramesh Agro Pvt Ltd - Maharashtra</p>
-<p>Sharma Fertilizers - Punjab</p>
-<p>Green Valley Traders - Gujarat</p>
+<h3>Soil Revitalizer</h3>
+<p>Restores soil nutrients naturally</p>
+<br>
+<button class="btn" onclick="openModal('Enhances microbial activity and long-term fertility.')">View Details</button>
 </div>
-
-<hr style="margin:50px 0;opacity:.2">
+<div class="card">
+<h3>Liquid Organic Mix</h3>
+<p>Fast absorption fertilizer</p>
+<br>
+<button class="btn" onclick="openModal('Quick nutrient delivery for high performance farming.')">View Details</button>
+</div>
+</div>
+</div>
+</section>
 
 <!-- DEALER DASHBOARD -->
-
-<h1>Dealer Dashboard (Preview)</h1>
-
-<div class="grid">
-<div class="card stat">
-<h3>₹2.8L</h3>
-<p>Your Monthly Orders</p>
+<section id="dealer" class="hidden">
+<div class="container">
+<h2>Dealer Dashboard</h2><br>
+<div class="dashboard grid">
+<div class="card"><h3>₹2.4L</h3><p>Monthly Orders</p></div>
+<div class="card"><h3>14%</h3><p>Your Margin</p></div>
+<div class="card"><h3>6</h3><p>Pending Deliveries</p></div>
 </div>
-<div class="card stat">
-<h3>12%</h3>
-<p>Your Profit Margin</p>
-</div>
-<div class="card stat">
-<h3>8</h3>
-<p>Pending Deliveries</p>
-</div>
-</div>
-
+<br>
 <div class="card">
-<h2>Place New Order</h2>
-<input placeholder="Product Name">
-<input placeholder="Quantity">
+<h3>Place New Order</h3><br>
+<input placeholder="Product Name" style="width:100%;padding:10px;margin-bottom:10px">
+<input placeholder="Quantity" style="width:100%;padding:10px;margin-bottom:10px">
 <button class="btn">Submit Order</button>
 </div>
+</div>
+</section>
 
+<!-- ADMIN DASHBOARD -->
+<section id="admin" class="hidden">
+<div class="container">
+<h2>Admin Dashboard</h2><br>
+<div class="dashboard grid">
+<div class="card"><h3>182</h3><p>Total Dealers</p></div>
+<div class="card"><h3>₹18.4L</h3><p>Revenue</p></div>
+<div class="card"><h3>23</h3><p>New Leads</p></div>
+</div>
+<br>
+<div class="card">
+<h3>Recent Leads</h3>
+<p>Ramesh Agro Pvt Ltd</p>
+<p>Sharma Traders</p>
+<p>Green Valley Supplies</p>
+</div>
+</div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+<div class="modal-content">
+<p id="modalText"></p><br>
+<button class="btn" onclick="closeModal()">Close</button>
+</div>
 </div>
 
+<a class="whatsapp" href="https://wa.me/919999999999">💬</a>
+
 <script>
-const ctx=document.getElementById('myChart');
-new Chart(ctx,{
-type:'line',
-data:{
-labels:['Jan','Feb','Mar','Apr','May','Jun'],
-datasets:[{
-label:'Revenue',
-data:[120000,180000,150000,220000,210000,280000],
-borderColor:'#22c55e',
-backgroundColor:'rgba(34,197,94,0.2)',
-tension:0.4
-}]
-},
-options:{plugins:{legend:{labels:{color:"#fff"}}},
-scales:{
-x:{ticks:{color:"#fff"}},
-y:{ticks:{color:"#fff"}}
-}}
-});
+function showSection(id){
+document.getElementById('home').classList.add('hidden');
+document.getElementById('products').classList.add('hidden');
+document.getElementById('dealer').classList.add('hidden');
+document.getElementById('admin').classList.add('hidden');
+document.getElementById(id).classList.remove('hidden');
+window.scrollTo(0,0);
+}
+function openModal(text){
+document.getElementById('modalText').innerText=text;
+document.getElementById('modal').classList.remove('hidden');
+}
+function closeModal(){
+document.getElementById('modal').classList.add('hidden');
+}
 </script>
 
 </body>
